@@ -22,13 +22,18 @@ public class MyController extends HttpServlet  {
         RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
         DAOFactory daoFactory = DAOFactory.getInstance();
         ProduitDaoImpl imp= new ProduitDaoImpl(daoFactory);
-        try {
-            produit p =imp.getById(3);
-            request.setAttribute("productName" , p.getName());
-            request.setAttribute("productPrice" , p.getPrice());
+        produit[] productTable = new produit[10];
+        for (int i = 1; i < 5; i++) {
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            try {
+                produit p =imp.getById(i);
+                System.out.println("Product " + i + ": " + (p != null ? p.getName() : "null"));
+                request.setAttribute("productName_"+i, p.getName());
+                request.setAttribute("productPrice_"+i , p.getPrice());
+                request.setAttribute("productInfo_"+i, p.getDescription());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
 
