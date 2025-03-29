@@ -11,7 +11,7 @@
 <h3>Merci de vous connecter</h3>
 <div class="login-container">
     <h2>Connexion</h2>
-    <form action="mycontroller" method="get">
+    <form action="mycontroller" method="POST">
         <label for="login">Login :</label>
         <input type="text" id="login" name="login" required>
 

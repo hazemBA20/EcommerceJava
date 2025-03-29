@@ -12,7 +12,9 @@
 </head>
 <body>
 <div class="welcome-container">
-    <h1>Welcome, <%= request.getAttribute("login") %> !</h1>
+    <h1>Welcome, <%= request.getAttribute("login") %>  </h1>
+    <div class="products" style=" background-color: lightblue ;width: 50px;"><%=request.getAttribute("productName")%>></div>
+
 </div>
 
 </body>

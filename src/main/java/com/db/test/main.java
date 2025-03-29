@@ -11,10 +11,8 @@ public static void main(String[] args) throws SQLException {
     //produit prod=new produit(4, "Gaming Mouse" , 55 , "reaches up to 5000 dpi!!", null);
     //produitDao.insert(prod);
     produit p = produitDao.getById(3);
-    p.setDescription(p.getDescription()+ "hey so did this shit work or no");
-    produitDao.update(p);
-    produit p1 = produitDao.getById(3);
-    System.out.println(p1.getDescription());
+    System.out.println(p.getName());
+
 
 
 
