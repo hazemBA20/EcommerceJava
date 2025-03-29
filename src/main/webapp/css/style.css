@@ -1,0 +1,13 @@
+.container{
+    display: inline-grid;
+    align-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.products{
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+
+}

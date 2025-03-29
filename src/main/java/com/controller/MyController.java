@@ -27,7 +27,7 @@ public class MyController extends HttpServlet  {
 
             try {
                 produit p =imp.getById(i);
-                System.out.println("Product " + i + ": " + (p != null ? p.getName() : "null"));
+                //System.out.println("Product " + i + ": " + (p != null ? p.getName() : "null"));
                 request.setAttribute("productName_"+i, p.getName());
                 request.setAttribute("productPrice_"+i , p.getPrice());
                 request.setAttribute("productInfo_"+i, p.getDescription());
