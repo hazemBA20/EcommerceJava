@@ -8,6 +8,7 @@
   <name>hello Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+
     <!-- MySQL Connector -->
     <dependency>
       <groupId>mysql</groupId>

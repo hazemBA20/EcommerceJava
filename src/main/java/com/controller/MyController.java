@@ -10,6 +10,7 @@ import com.ecommerce.dao.DAOFactory;
 import com.ecommerce.dao.ProduitDaoImpl;
 import com.ecommerce.model.produit;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet("/mycontroller")
 public class MyController extends HttpServlet  {
@@ -19,24 +20,18 @@ public class MyController extends HttpServlet  {
         String password = request.getParameter("password");
         request.setAttribute("login", login);
         request.setAttribute("password", password);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
+
         DAOFactory daoFactory = DAOFactory.getInstance();
         ProduitDaoImpl imp= new ProduitDaoImpl(daoFactory);
-        produit[] productTable = new produit[10];
-        for (int i = 1; i < 5; i++) {
-
-            try {
-                produit p =imp.getById(i);
-                //System.out.println("Product " + i + ": " + (p != null ? p.getName() : "null"));
-                request.setAttribute("productName_"+i, p.getName());
-                request.setAttribute("productPrice_"+i , p.getPrice());
-                request.setAttribute("productInfo_"+i, p.getDescription());
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            List<produit> list=imp.getAll();
+            request.setAttribute("list", list);
+            System.out.println("Elements list size: " + list.size());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
-
+        RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
         dispatcher.forward(request, response);
 
     }

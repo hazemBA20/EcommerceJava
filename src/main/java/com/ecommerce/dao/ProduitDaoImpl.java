@@ -4,6 +4,8 @@ import com.ecommerce.model.produit;
 
 import java.awt.image.BufferedImage;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProduitDaoImpl implements ProduitDao {
     private DAOFactory          daoFactory;
@@ -82,5 +84,24 @@ public class ProduitDaoImpl implements ProduitDao {
     public produit getByName (String name) throws SQLException{
         return null;
     };
+    public List<produit> getAll() throws SQLException{
+        Connection connection=daoFactory.getConnection();
+        String query="select * from produit";
+        PreparedStatement ps=connection.prepareStatement(query);
+        ResultSet rs=ps.executeQuery();
+        List<produit> list=new ArrayList<>();
+        while (rs.next()){
+            produit produit=new produit(rs.getInt("ProductId"),
+                    rs.getString("Nom"),
+                    rs.getDouble("Prix"),
+            rs.getString("info"),
+                    null);
+            list.add(produit);
+
+        }
+        return list;
+
+
+    }
 
 }
