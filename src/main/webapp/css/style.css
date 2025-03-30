@@ -1,7 +1,16 @@
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 77px;
+    background: #202225;
+}
 button{
     cursor: pointer;
 }
 .container{
+    margin-top: 82px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 grid-gap: 30px;
