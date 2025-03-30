@@ -114,7 +114,7 @@ public class ProduitDaoImpl implements ProduitDao {
                     rs.getString("Nom"),
                     rs.getDouble("Prix"),
             rs.getString("info"),
-                    null);
+                    rs.getString("imagePath"));
             list.add(produit);
 
         }

@@ -80,8 +80,8 @@ public class ProductController extends HttpServlet {
         try {
 
             imp.insert(newProduct);
-            response.sendRedirect( request.getContextPath() +"/mycontroller");
-
+            response.sendRedirect( request.getContextPath() +"/hello.jsp");
+            return;
 
         } catch (SQLException e) {
             e.printStackTrace();
