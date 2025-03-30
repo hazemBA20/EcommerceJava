@@ -38,8 +38,12 @@ public class ProductController extends HttpServlet {
             try {
                 produit p=imp.getById(productId);
                 imp.delete(p);
-                response.sendRedirect( request.getContextPath() +"/mycontroller");
+                System.out.println("gg");
+                System.out.println(request.getContextPath());
 
+                response.sendRedirect( "/hello/hello.jsp");
+                System.out.println("after");
+                return;
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

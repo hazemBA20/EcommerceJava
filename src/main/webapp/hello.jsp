@@ -1,5 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.ecommerce.model.produit" %><%--
+<%@ page import="com.ecommerce.model.produit" %>
+<%@ page import="com.ecommerce.dao.ProduitDaoImpl" %>
+<%@ page import="com.ecommerce.dao.DAOFactory" %><%--
   Created by IntelliJ IDEA.
   User: BAZ INFO
   Date: 3/5/2025
@@ -16,11 +18,13 @@
 </head>
 <body>
 
-<h1>Welcome, <%= request.getAttribute("login") %>  </h1>
+<h1>Welcome, hazem  </h1>
 
 
     <%
-        List<produit> list=(List<produit>)request.getAttribute("list");
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        ProduitDaoImpl prodImp= new ProduitDaoImpl(daoFactory);
+        List<produit> list=prodImp.getAll();
     %>
     <div class="container">
 
