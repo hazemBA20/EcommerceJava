@@ -19,8 +19,13 @@
 <body>
 
 <nav>
-    <
-    <img class="logout-icon" src="images/switch.png" alt="" >
+    <form action="logout" method="GET">
+       <button style="z-index: -1 ; background-color: transparent; border: none" type="submit">
+           <img  class="logout-icon" src="images/switch.png" alt="" >
+       </button>
+
+    </form>
+
 </nav>
 <%  if (session != null  && session.getAttribute("username")!=null){
 %>
