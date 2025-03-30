@@ -13,7 +13,7 @@ target/
 *.ipr
 
 ### db config
-src/main/resources/dao.properties
+src/main/resources/*
 
 ### Eclipse ###
 .apt_generated
