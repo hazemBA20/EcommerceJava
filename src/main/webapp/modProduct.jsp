@@ -4,6 +4,9 @@
 <%@ page import="com.ecommerce.dao.DAOFactory" %>
 <%@ page import="java.sql.SQLException" %>
 
+
+<%  if (session != null  && session.getAttribute("username")!=null){
+%>
 <%
     int productId = Integer.parseInt(request.getParameter("id"));
     DAOFactory daoFactory = DAOFactory.getInstance();
@@ -51,3 +54,8 @@
 </form>
 </body>
 </html>
+<%
+    }else {
+        response.sendRedirect("index.jsp");
+
+    }%>

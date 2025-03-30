@@ -18,8 +18,10 @@
 </head>
 <body>
 
-<h1>Welcome, hazem  </h1>
+<%  if (session != null  && session.getAttribute("username")!=null){
+    %>
 
+<h1>Welcome,  <%= session.getAttribute("username")%> </h1>
 
     <%
         DAOFactory daoFactory = DAOFactory.getInstance();
@@ -73,3 +75,9 @@
 
 </body>
 </html>
+
+<%
+    }else {
+        response.sendRedirect("index.jsp");
+
+    }%>
