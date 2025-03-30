@@ -1,9 +1,16 @@
+button{
+    cursor: pointer;
+}
 .container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 grid-gap: 30px;
 
     border-width: 1px;
+
+}
+.details-container{
+    display: flex;
 
 }
 .product-container{

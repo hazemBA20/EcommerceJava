@@ -8,15 +8,15 @@ public class produit {
     private String name;
     private double price;
     private String description;
-    private BufferedImage image;
+    private String imagePath;
 
     public produit() {}
-    public produit(int id, String name, double price, String description, BufferedImage image) {
+    public produit(int id, String name, double price, String description, String imagePath) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.image = image;
+        this.imagePath = imagePath;
 
     }
     public int getId() {
@@ -43,12 +43,15 @@ public class produit {
     public void setDescription(String description) {
         this.description = description;
     }
-    public BufferedImage getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
+
     }
-    public void setImage(BufferedImage image) {
-        this.image = image;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
+
+
 
 
 

@@ -12,8 +12,11 @@
 
 <h1>Ajouter un Produit</h1>
 
-<form action="mycontroller" method="POST" enctype="multipart/form-data">
+<form action="ProductController" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="action" value="addProduct">
+
+    <label for="id">ID du Produit :</label>
+    <input type="number" id="id" name="id" required>
 
     <label for="nom">Nom du Produit :</label>
     <input type="text" id="nom" name="nom" required>

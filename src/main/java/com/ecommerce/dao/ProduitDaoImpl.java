@@ -3,6 +3,7 @@ package com.ecommerce.dao;
 import com.ecommerce.model.produit;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +20,13 @@ public class ProduitDaoImpl implements ProduitDao {
 
 
         Connection connection=daoFactory.getConnection();
-        String query="INSERT INTO produit(Nom,Prix,Info,ProductId)VALUES(?,?,?,?)";
+        String query="INSERT INTO produit(Nom,Prix,Info,ProductId , imagePath)VALUES(?,?,?,? , ?)";
         PreparedStatement preparedStatement=connection.prepareStatement(query);
         preparedStatement.setString(1,produit.getName());
         preparedStatement.setDouble(2,produit.getPrice());
         preparedStatement.setString(3,produit.getDescription());
         preparedStatement.setInt(4,produit.getId());
+        preparedStatement.setString(5, produit.getImagePath());
         preparedStatement.executeUpdate();
 
     };
@@ -51,6 +53,23 @@ public class ProduitDaoImpl implements ProduitDao {
     @Override
     public void delete(produit produit) throws SQLException{
         Connection connection=daoFactory.getConnection();
+        String getImageQuery = "SELECT imagePath FROM produit WHERE ProductId=?";
+        PreparedStatement getImagePs = connection.prepareStatement(getImageQuery);
+        getImagePs.setInt(1, produit.getId());
+        ResultSet rs = getImagePs.executeQuery();
+
+        String path = null;
+        if (rs.next()) {
+            path = rs.getString("imagePath");
+        }
+
+
+        if (path != null) {
+            File imageFile = new File( path);
+            if (imageFile.exists()) {
+                imageFile.delete();
+            }
+        }
         String query="DELETE FROM produit WHERE ProductId=?";
         PreparedStatement ps=connection.prepareStatement(query);
         ps.setInt(1,produit.getId());
@@ -70,7 +89,7 @@ public class ProduitDaoImpl implements ProduitDao {
                     rs.getString("Nom"),
                     rs.getDouble("Prix"),
                     rs.getString("Info"),
-                    null);
+                    rs.getString("imagePath"));
             return produit;
 
         }

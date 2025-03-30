@@ -23,6 +23,7 @@ public class MyController extends HttpServlet  {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         request.setAttribute("login", login);

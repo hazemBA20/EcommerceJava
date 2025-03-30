@@ -28,11 +28,23 @@
             for (produit prod : list){
         %>
         <div class="product-container">
-            <div class="details-container"><p><%= prod.getName() %></p>
-                <p><%= prod.getPrice() %></p>
-                <p><%= prod.getDescription() %></p></div>
+            <div class="details-container">
+                <div class="image-container">
+                    <img src="<%= prod.getImagePath() %>" alt="Product Image" width="200">
+                </div>
+                <div class="text">
+                    <p><%= prod.getName() %></p>
+                    <p><%= prod.getPrice() %></p>
+                    <p><%= prod.getDescription() %></p>
+                </div>
+                </div>
             <div class="button-container">
-                <button id="delete">Delete</button>
+                <form action="ProductController" method="POST">
+                    <input type="hidden" name="action" value="deleteProduct">
+                    <input type="hidden" name="productId" value="<%= prod.getId() %>">
+                    <%= prod.getId() %>
+                    <button type="submit" id="delete">Delete</button>
+                </form>
                 <button id="Modify">Modify</button>
             </div>
         </div>
