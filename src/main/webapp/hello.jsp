@@ -16,7 +16,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="padding-bottom: 3000px">
 
 <nav>
     <form action="logout" method="GET">
@@ -47,7 +47,7 @@
         <div class="product-container">
             <div class="details-container">
                 <div class="image-container">
-                    <img src="<%= prod.getImagePath() %>" alt="Product Image" width="200">
+                    <img  class="porduct-image" src="<%= prod.getImagePath() %>" alt="Product Image" width="200">
                 </div>
                 <div class="text">
                     <p><%= prod.getName() %></p>

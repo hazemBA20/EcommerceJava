@@ -15,9 +15,14 @@ nav{
     width: 40px;
     padding-left: 50px;
 
+
 }
 button{
     cursor: pointer;
+}
+.porduct-image{
+    width: 200px;
+    margin-right: 50px;
 }
 .container{
     margin-top: 82px;
@@ -30,6 +35,8 @@ grid-gap: 30px;
 }
 .details-container{
     display: flex;
+    justify-content: space-around;
+
 
 }
 .product-container{
