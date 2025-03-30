@@ -46,10 +46,16 @@
                 <form action="ProductController" method="POST">
                     <input type="hidden" name="action" value="deleteProduct">
                     <input type="hidden" name="productId" value="<%= prod.getId() %>">
-                    <%= prod.getId() %>
+
                     <button type="submit" id="delete">Delete</button>
                 </form>
-                <button id="Modify">Modify</button>
+                <form action="ProductController" method="POST">
+                    <input type="hidden" name="action" value="modifyButton">
+                    <input type="hidden" name="productId" value="<%= prod.getId() %>">
+
+
+                    <button type="submit" id="Modify">Modify</button>
+                </form>
             </div>
         </div>
         <%

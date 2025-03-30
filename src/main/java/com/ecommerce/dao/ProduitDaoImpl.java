@@ -31,19 +31,21 @@ public class ProduitDaoImpl implements ProduitDao {
 
     };
     @Override
-    public void update(produit produit) throws SQLException{
+    public void update(produit produit ,int id) throws SQLException{
         Connection connection=daoFactory.getConnection();
-        String query="UPDATE  produit  SET Nom= ? ,Prix= ? ,Info= ? WHERE ProductId = ?";
+        String query="UPDATE  produit  SET Nom= ? ,Prix= ? ,Info= ? , imagePath=? WHERE ProductId = ?";
         PreparedStatement ps=connection.prepareStatement(query);
         ps.setString(1,produit.getName());
         ps.setDouble(2,produit.getPrice());
         ps.setString(3,produit.getDescription());
-        ps.setInt(4,produit.getId());
+        ps.setInt(5,id);
+        ps.setString(4,produit.getImagePath());
+
         ps.executeUpdate();
 
 
 
-        int id=produit.getId();
+
 
 
 

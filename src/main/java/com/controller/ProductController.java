@@ -30,7 +30,7 @@ public class ProductController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if("deleteProduct".equals(action)){
-            String productIdStr = request.getParameter("productId"); // Retrieve productId
+            String productIdStr = request.getParameter("productId");
             int productId = Integer.parseInt(productIdStr);
             DAOFactory daoFactory = DAOFactory.getInstance();
             ProduitDaoImpl imp= new ProduitDaoImpl(daoFactory);
@@ -47,6 +47,78 @@ public class ProductController extends HttpServlet {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+        } else if ("modifyButton".equals(action)) {
+            String productIdStr = request.getParameter("productId");
+            int productId = Integer.parseInt(productIdStr);
+
+            request.setAttribute("id" ,productId );
+            response.sendRedirect(request.getContextPath() + "/modProduct.jsp?id=" + productId);
+
+            return;
+
+
+
+
+        } else if ("updateProduct".equals(action)) {
+            String productIdStr = request.getParameter("id");
+            int productId = Integer.parseInt(productIdStr);
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            ProduitDaoImpl imp= new ProduitDaoImpl(daoFactory);
+            String name=request.getParameter("nom");
+            String description=request.getParameter("description");
+
+            double price = Double.parseDouble(request.getParameter("prix"));
+
+            String currentImagePath=request.getParameter("imagePath");
+
+
+
+
+            try {
+                produit product = imp.getById(productId);
+
+
+                product.setName(name);
+                product.setDescription(description);
+                product.setPrice(price);
+                Part filePart = request.getPart("image");
+                if (filePart != null && filePart.getSize() > 0) {
+
+                    String uploadPath = getServletContext().getRealPath("") + File.separator + "images";
+                    File uploadDir = new File(uploadPath);
+                    if (!uploadDir.exists()) {
+                        uploadDir.mkdir();
+                    }
+
+                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+                    String filePath = "images/" + fileName;
+                    filePart.write(uploadPath + File.separator + fileName);
+
+
+                    File oldImage = new File(getServletContext().getRealPath("") + File.separator + currentImagePath);
+                    if (oldImage.exists()) {
+                        oldImage.delete();
+                    }
+
+                    product.setImagePath(filePath);
+                } else {
+
+                    product.setImagePath(currentImagePath);
+                }
+
+
+
+                imp.update(product , productId);
+
+                response.sendRedirect( "/hello/hello.jsp");
+                return;
+
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
 
         }
         int id = Integer.parseInt(request.getParameter("id"));
