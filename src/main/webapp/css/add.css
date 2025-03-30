@@ -18,7 +18,7 @@ body {
 }
 
 /* Heading */
-h2 {
+h1 {
     font-size: 28px;
     margin-bottom: 20px;
     color: #2c3e50;
@@ -31,7 +31,7 @@ form {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -39,7 +39,7 @@ form {
 /* Labels */
 label {
     font-weight: 600;
-    margin-top: 10px;
+    margin-bottom: 5px;
     display: block;
     color: #34495e;
 }
@@ -48,7 +48,7 @@ label {
 input, textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -66,28 +66,20 @@ input[type="file"] {
     padding: 5px;
 }
 
-/* Image Preview */
-img {
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
 /* Submit Button */
 button {
-    background-color: #f39c12;
+    background-color: #27ae60;
     color: white;
     padding: 12px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
     transition: background 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #e67e22;
+    background-color: #219150;
 }
 
 /* Responsive Design */
