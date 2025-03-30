@@ -19,6 +19,11 @@
 <body>
 
 <nav></nav>
+<%  if (session != null  && session.getAttribute("username")!=null){
+%>
+
+<h1>Welcome,  <%= session.getAttribute("username")%> </h1>
+
 
 
     <%

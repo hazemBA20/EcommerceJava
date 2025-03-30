@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import com.ecommerce.dao.DAOFactory;
 import com.ecommerce.dao.ProduitDaoImpl;
@@ -35,10 +36,11 @@ public class Auth extends HttpServlet  {
         User user=new User(1 , login , password);
         try {
             User u = userDao.getUser(user);
-            //added root root login for simplicity
-            if(u != null || (login.equals("root")  && password.equals("root"))) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
-                dispatcher.forward(request, response);
+            if(u != null){ // if logged in
+                HttpSession session = request.getSession(true);
+                session.setAttribute("username", login); // Store username in session
+                session.setMaxInactiveInterval(120 * 60);
+                response.sendRedirect("hello.jsp");
             }
             else{
                 request.setAttribute("error", "Invalid login or password");

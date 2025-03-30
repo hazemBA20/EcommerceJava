@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<%  if (session != null  && session.getAttribute("username")!=null){
+%>
 <h1>Ajouter un Produit</h1>
 
 <form action="ProductController" method="POST" enctype="multipart/form-data">
@@ -35,3 +37,9 @@
 
 </body>
 </html>
+
+<%
+    }else {
+    response.sendRedirect("index.jsp");
+
+    }%>
