@@ -19,6 +19,7 @@
 <body>
 
 <nav>
+    <
     <img class="logout-icon" src="images/switch.png" alt="" >
 </nav>
 <%  if (session != null  && session.getAttribute("username")!=null){

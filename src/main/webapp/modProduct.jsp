@@ -22,6 +22,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="css/modify.css">
     <title>Edit Product</title>
 </head>
 <body>
