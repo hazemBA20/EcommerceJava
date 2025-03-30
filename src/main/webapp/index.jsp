@@ -17,7 +17,7 @@
 
 <div class="login-container">
     <h2>Connexion</h2>
-    <form action="mycontroller" method="POST">
+    <form action="auth" method="POST">
         <label for="login">Login :</label>
         <input type="text" id="login" name="login" required>
 
