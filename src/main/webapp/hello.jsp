@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<h1>Welcome, hazem  </h1>
+<nav></nav>
 
 
     <%

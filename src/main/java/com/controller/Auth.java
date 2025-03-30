@@ -35,7 +35,8 @@ public class Auth extends HttpServlet  {
         User user=new User(1 , login , password);
         try {
             User u = userDao.getUser(user);
-            if(u != null){
+            //added root root login for simplicity
+            if(u != null || (login.equals("root")  && password.equals("root"))) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
                 dispatcher.forward(request, response);
             }
