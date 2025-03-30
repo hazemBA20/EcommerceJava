@@ -8,7 +8,13 @@
 </head>
 <body>
 <h1>E-Commerce</h1>
-<h3>Merci de vous connecter</h3>
+
+<% String error = (String) request.getAttribute("error"); %>
+<% if (error != null) { %>
+<h2 style="color: red;"><%= error %></h2>
+<% } %>
+
+
 <div class="login-container">
     <h2>Connexion</h2>
     <form action="mycontroller" method="POST">

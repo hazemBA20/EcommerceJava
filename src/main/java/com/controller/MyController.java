@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import com.ecommerce.dao.DAOFactory;
 import com.ecommerce.dao.ProduitDaoImpl;
+import com.ecommerce.dao.UserDaoImp;
+import com.ecommerce.model.User;
 import com.ecommerce.model.produit;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,17 +24,35 @@ public class MyController extends HttpServlet  {
         request.setAttribute("password", password);
 
         DAOFactory daoFactory = DAOFactory.getInstance();
-        ProduitDaoImpl imp= new ProduitDaoImpl(daoFactory);
+        UserDaoImp userDao=new UserDaoImp(daoFactory);
+        User user=new User(1 , login , password);
         try {
-            List<produit> list=imp.getAll();
-            request.setAttribute("list", list);
-            System.out.println("Elements list size: " + list.size());
+            User u = userDao.getUser(user);
+            if(u != null){
+                try {
+                    ProduitDaoImpl imp= new ProduitDaoImpl(daoFactory);
+                    List<produit> list=imp.getAll();
+                    request.setAttribute("list", list);
+                    System.out.println("Elements list size: " + list.size());
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
+                dispatcher.forward(request, response);
+            }
+            else{
+                request.setAttribute("error", "Invalid login or password");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                dispatcher.forward(request, response);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
-        dispatcher.forward(request, response);
+
+
+
 
     }
 
