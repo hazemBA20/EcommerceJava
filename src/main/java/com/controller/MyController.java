@@ -16,6 +16,11 @@ import java.util.List;
 
 @WebServlet("/mycontroller")
 public class MyController extends HttpServlet  {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("addProduct.jsp");
+        dispatcher.forward(request, response);
+
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");

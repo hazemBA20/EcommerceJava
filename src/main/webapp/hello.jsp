@@ -40,9 +40,12 @@
             }%>
         <div class="adding">
             <label>Click here in order to add a product</label>
-            <button id="add-button" type="submit"  value="Submit">
-                <img src="images/Plus_symbol.svg.png" class="plus" alt="">
-            </button>
+            <form action="mycontroller" method="GET">
+                <button id="add-button" type="submit"  value="Submit">
+                    <img src="images/Plus_symbol.svg.png" class="plus" alt="">
+                </button>
+            </form>
+
         </div>
     </div>
 
